@@ -1,0 +1,81 @@
+
+<div class="calculator-page">
+  <div class="page-header">
+    <div class="container">
+      <a routerLink="/" class="back-btn">
+        ← Back to Portfolio
+      </a>
+      <h1 class="page-title">Advanced Calculator</h1>
+      <p class="page-description">
+        A feature-rich calculator with history and multiple themes
+      </p>
+    </div>
+  </div>
+  
+  <div class="calculator-container">
+    <div class="calculator">
+      <div class="calculator-header">
+        <div class="header-left">
+          <span class="app-name">Calculator.exe</span>
+        </div>
+        <div class="header-right">
+          <button class="theme-btn" (click)="toggleTheme()">
+            {{ isDarkTheme ? '☀️' : '🌙' }}
+          </button>
+        </div>
+      </div>
+      
+      <div class="calculator-display">
+        <div class="display-history">{{ history }}</div>
+        <div class="display-current">{{ display }}</div>
+      </div>
+      
+      <div class="calculator-buttons">
+        <!-- Row 1: Functions -->
+        <button class="btn btn-function" (click)="clear()">C</button>
+        <button class="btn btn-function" (click)="clearEntry()">CE</button>
+        <button class="btn btn-function" (click)="backspace()">⌫</button>
+        <button class="btn btn-operator" (click)="operation('/')">÷</button>
+        
+        <!-- Row 2: Numbers -->
+        <button class="btn btn-number" (click)="appendNumber('7')">7</button>
+        <button class="btn btn-number" (click)="appendNumber('8')">8</button>
+        <button class="btn btn-number" (click)="appendNumber('9')">9</button>
+        <button class="btn btn-operator" (click)="operation('*')">×</button>
+        
+        <!-- Row 3: Numbers -->
+        <button class="btn btn-number" (click)="appendNumber('4')">4</button>
+        <button class="btn btn-number" (click)="appendNumber('5')">5</button>
+        <button class="btn btn-number" (click)="appendNumber('6')">6</button>
+        <button class="btn btn-operator" (click)="operation('-')">−</button>
+        
+        <!-- Row 4: Numbers -->
+        <button class="btn btn-number" (click)="appendNumber('1')">1</button>
+        <button class="btn btn-number" (click)="appendNumber('2')">2</button>
+        <button class="btn btn-number" (click)="appendNumber('3')">3</button>
+        <button class="btn btn-operator" (click)="operation('+')">+</button>
+        
+        <!-- Row 5: Zero and functions -->
+        <button class="btn btn-number btn-zero" (click)="appendNumber('0')">0</button>
+        <button class="btn btn-function" (click)="decimal()">.</button>
+        <button class="btn btn-equals" (click)="calculate()">=</button>
+      </div>
+    </div>
+    
+    <div class="calculator-history" *ngIf="calculatorHistory.length > 0">
+      <h3>History</h3>
+      <div class="history-list">
+        <div 
+          class="history-item" 
+          *ngFor="let item of calculatorHistory; trackBy: trackByFn"
+          (click)="useHistoryItem(item)">
+          <span class="history-expression">{{ item.expression }}</span>
+          <span class="history-result">{{ item.result }}</span>
+        </div>
+      </div>
+      <button class="clear-history-btn" (click)="clearHistory()">
+        Clear History
+      </button>
+    </div>
+  </div>
+</div>

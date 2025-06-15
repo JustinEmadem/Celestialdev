@@ -1,0 +1,100 @@
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-prefix">02.</span>
+        <span class="title-text">My Applications</span>
+      </h2>
+      <p class="section-subtitle">
+        A collection of creative applications I've built to showcase my skills
+      </p>
+    </div>
+    
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button 
+        class="filter-tab"
+        [class.active]="activeFilter === 'all'"
+        (click)="setFilter('all')">
+        All Projects
+      </button>
+      <button 
+        class="filter-tab"
+        [class.active]="activeFilter === 'completed'"
+        (click)="setFilter('completed')">
+        Completed
+      </button>
+      <button 
+        class="filter-tab"
+        [class.active]="activeFilter === 'in-progress'"
+        (click)="setFilter('in-progress')">
+        In Progress
+      </button>
+    </div>
+    
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid">
+      <div 
+        class="portfolio-card"
+        *ngFor="let item of filteredItems; trackBy: trackByFn"
+        [attr.data-category]="item.category">
+        
+        <div class="card-header">
+          <div class="card-status" [attr.data-status]="item.status">
+            {{ getStatusText(item.status) }}
+          </div>
+          <div class="card-actions">
+            <a 
+              *ngIf="item.demoUrl" 
+              [routerLink]="item.demoUrl.startsWith('/') ? item.demoUrl : null"
+              [href]="!item.demoUrl.startsWith('/') ? item.demoUrl : null"
+              [target]="!item.demoUrl.startsWith('/') ? '_blank' : undefined"
+              class="action-btn demo-btn"
+              title="Live Demo">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm3.287 6.906c-.067.188-.205.295-.393.295-.061 0-.124-.012-.185-.038L8.93 6.769c-.243-.104-.402-.347-.402-.615V3.769c0-.381.31-.691.691-.691s.691.31.691.691v2.155l1.566.672c.35.15.508.559.359.91z"/>
+              </svg>
+            </a>
+            
+            <a 
+              *ngIf="item.codeUrl" 
+              [href]="item.codeUrl" 
+              target="_blank" 
+              class="action-btn code-btn"
+              title="View Code">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="card-image">
+          <img [src]="item.image" [alt]="item.title" loading="lazy">
+          <div class="image-overlay">
+            <span class="overlay-text">{{ item.category.replace('-', ' ').toUpperCase() }}</span>
+          </div>
+        </div>
+        
+        <div class="card-content">
+          <h3 class="card-title">{{ item.title }}</h3>
+          <p class="card-description">{{ item.description }}</p>
+          
+          <div class="card-technologies">
+            <span 
+              class="tech-tag" 
+              *ngFor="let tech of item.technologies">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredItems.length === 0">
+      <div class="empty-icon">📝</div>
+      <h3>No projects found</h3>
+    </div>
+  </div>
+</section>

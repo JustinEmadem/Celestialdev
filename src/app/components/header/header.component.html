@@ -1,0 +1,35 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="header-content">
+      <!-- Logo -->
+      <a routerLink="/" class="logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">CelestialDev</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop">
+        <a routerLink="/" class="nav-link" fragment="home">Home</a>
+        <a routerLink="/" class="nav-link" fragment="portfolio">Portfolio</a>
+        <a routerLink="/" class="nav-link" fragment="about">About</a>
+        <a routerLink="/" class="nav-link" fragment="contact">Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+        <span class="hamburger-line" [class.active]="isMobileMenuOpen"></span>
+        <span class="hamburger-line" [class.active]="isMobileMenuOpen"></span>
+        <span class="hamburger-line" [class.active]="isMobileMenuOpen"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" [class.open]="isMobileMenuOpen">
+      <a routerLink="/" class="nav-link-mobile" fragment="home" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/" class="nav-link-mobile" fragment="portfolio" (click)="closeMobileMenu()">Portfolio</a>
+      <a routerLink="/" class="nav-link-mobile" fragment="about" (click)="closeMobileMenu()">About</a>
+      <a routerLink="/" class="nav-link-mobile" fragment="contact" (click)="closeMobileMenu()">Contact</a>
+    </nav>
+  </div>
+</header>

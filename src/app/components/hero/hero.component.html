@@ -1,0 +1,67 @@
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="greeting fade-in-up">
+          <span class="prompt">$</span> Hello, I'm
+        </div>
+        
+        <h1 class="hero-title fade-in-up">
+          <span class="title-line">
+            <span class="keyword">const</span>
+            <span class="variable">developer</span>
+            <span class="operator">=</span>
+            <span class="string">"</span>
+          </span>
+          <span class="title-name text-gradient">Justin Emadem</span>
+          <span class="string">";</span>
+        </h1>
+        
+        <p class="hero-subtitle fade-in-up">
+          <span class="comment">// Full-stack developer passionate about creating</span><br>
+          <span class="comment">// Innovative web applications and digital experiences</span><br>
+          <span class="comment">// Crafting smart apps with AI-powered analysis</span>
+        </p>
+        
+        <div class="hero-actions fade-in-up">
+          <a href="#portfolio" class="btn btn-primary">
+            <span class="btn-text">View My Work</span>
+            <span class="btn-icon">→</span>
+          </a>
+          
+          <a href="#contact" class="btn btn-secondary">
+            <span class="btn-text">Get In Touch</span>
+          </a>
+        </div>
+        
+        <div class="tech-stack fade-in-up">
+          <span class="tech-label">// Current stack:</span>
+          <div class="tech-items">
+            <span class="tech-item" *ngFor="let tech of techStack">{{ tech }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-visual slide-in-right">
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="terminal-btn close"></span>
+              <span class="terminal-btn minimize"></span>
+              <span class="terminal-btn maximize"></span>
+            </div>
+            <span class="terminal-title">portfolio.js</span>
+          </div>
+          
+          <div class="terminal-body">
+            <div class="terminal-line" *ngFor="let line of terminalCode; let i = index"
+                 [style.animation-delay]="(i * 0.2 + 1) + 's'">
+              <span class="line-number">{{ i + 1 }}</span>
+              <span class="line-content" [innerHTML]="line"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
