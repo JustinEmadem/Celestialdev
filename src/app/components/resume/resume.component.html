@@ -1,0 +1,134 @@
+<div class="resume-page">
+  <div class="page-header">
+    <div class="container">
+      <a routerLink="/" class="back-btn">← Back to Portfolio</a>
+      <h1 class="page-title">Resume</h1>
+      <p class="page-description">
+        My professional journey and technical expertise
+      </p>
+
+      <div class="resume-actions">
+        <button class="download-btn" (click)="downloadResume()">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+            <path
+              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+          </svg>
+          Download PDF
+        </button>
+
+        <button class="print-btn" (click)="printResume()">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+            <path
+              d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z" />
+          </svg>
+          Print
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="resume-container">
+    <div class="resume-content">
+      <!-- Personal Info -->
+      <div class="resume-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="title-icon">👤</span>
+            Personal Information
+          </h2>
+        </div>
+
+        <div class="personal-info">
+          <div class="info-grid">
+            <div class="info-item"><span class="info-label">Full Name:</span><span class="info-value">John Doe</span></div>
+            <div class="info-item"><span class="info-label">Email:</span><span class="info-value">john.doe&#64;example.com</span></div>
+            <div class="info-item"><span class="info-label">Phone:</span><span class="info-value">+1 (555) 123-4567</span></div>
+            <div class="info-item"><span class="info-label">Location:</span><span class="info-value">San Francisco, CA</span></div>
+            <div class="info-item"><span class="info-label">LinkedIn:</span><span class="info-value">linkedin.com/in/johndoe</span></div>
+            <div class="info-item"><span class="info-label">GitHub:</span><span class="info-value">github.com/johndoe</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="resume-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="title-icon">📝</span>
+            Professional Summary
+          </h2>
+        </div>
+        <div class="summary-content">
+          <p>
+            Passionate Full-Stack Developer with 3+ years of experience building scalable web applications
+            using modern technologies. Expertise in Angular, Laravel, and cloud technologies with a strong
+            focus on user experience and performance optimization. Proven track record of delivering
+            high-quality solutions in fast-paced environments.
+          </p>
+        </div>
+      </div>
+
+      <!-- Dynamic Resume Sections -->
+      <div class="resume-section" *ngFor="let section of resumeSections">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="title-icon">{{ getSectionIcon(section.title) }}</span>
+            {{ section.title }}
+          </h2>
+        </div>
+
+        <div class="section-content">
+          <div class="resume-item" *ngFor="let item of section.items">
+            <div class="item-header">
+              <h3 class="item-title">{{ item.title }}</h3>
+              <span class="item-period">{{ item.period }}</span>
+            </div>
+
+            <div class="item-meta" *ngIf="item.company || item.location">
+              <span class="item-company" *ngIf="item.company">{{ item.company }}</span>
+              <span class="item-location" *ngIf="item.location">{{ item.location }}</span>
+            </div>
+
+            <ul class="item-description">
+              <li *ngFor="let desc of item.description">{{ desc }}</li>
+            </ul>
+
+            <div class="item-technologies" *ngIf="item.technologies">
+              <span class="tech-tag" *ngFor="let tech of item.technologies">{{ tech }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills Sidebar -->
+    <div class="skills-sidebar">
+      <div class="skills-section">
+        <h3 class="skills-title">Technical Skills</h3>
+        <div class="skill-category" *ngFor="let category of skillCategories">
+          <h4 class="category-name">{{ category.name }}</h4>
+          <div class="skills-list">
+            <div class="skill-item" *ngFor="let skill of category.skills">
+              <span class="skill-name">{{ skill.name }}</span>
+              <div class="skill-bar">
+                <div class="skill-progress" [style.width.%]="skill.level"></div>
+              </div>
+              <span class="skill-level">{{ skill.level }}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="languages-section">
+        <h3 class="skills-title">Languages</h3>
+        <div class="language-item" *ngFor="let lang of languages">
+          <span class="language-name">{{ lang.name }}</span>
+          <span class="language-level">{{ lang.level }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
