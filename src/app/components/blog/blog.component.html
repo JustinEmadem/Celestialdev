@@ -1,0 +1,142 @@
+
+<div class="blog-page">
+  <div class="page-header">
+    <div class="container">
+      <a routerLink="/" class="back-btn">
+        ← Back to Portfolio
+      </a>
+      <h1 class="page-title">Tech Blog</h1>
+      <p class="page-description">
+        Thoughts, tutorials, and insights from my development journey
+      </p>
+    </div>
+  </div>
+  
+  <div class="blog-container">
+    <!-- Featured Post -->
+    <div class="featured-section" *ngIf="featuredPost">
+      <h2 class="section-title">Featured Article</h2>
+      <div class="featured-post">
+        <div class="featured-image">
+          <img [src]="featuredPost.image" [alt]="featuredPost.title">
+          <div class="featured-overlay">
+            <span class="featured-badge">Featured</span>
+          </div>
+        </div>
+        
+        <div class="featured-content">
+          <div class="post-meta">
+            <span class="post-author">{{ featuredPost.author }}</span>
+            <span class="post-date">{{ formatDate(featuredPost.publishDate) }}</span>
+            <span class="post-read-time">{{ featuredPost.readTime }} min read</span>
+          </div>
+          
+          <h3 class="featured-title">{{ featuredPost.title }}</h3>
+          <p class="featured-excerpt">{{ featuredPost.excerpt }}</p>
+          
+          <div class="post-tags">
+            <span class="tag" *ngFor="let tag of featuredPost.tags">{{ tag }}</span>
+          </div>
+          
+          <button class="read-more-btn" (click)="readPost(featuredPost)">
+            Read Full Article →
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Filter Tabs -->
+    <div class="filter-section">
+      <h2 class="section-title">All Articles</h2>
+      <div class="filter-tabs">
+        <button 
+          class="filter-tab"
+          [class.active]="activeFilter === 'all'"
+          (click)="setFilter('all')">
+          All Posts
+        </button>
+        <button 
+          class="filter-tab"
+          [class.active]="activeFilter === 'tutorial'"
+          (click)="setFilter('tutorial')">
+          Tutorials
+        </button>
+        <button 
+          class="filter-tab"
+          [class.active]="activeFilter === 'opinion'"
+          (click)="setFilter('opinion')">
+          Opinion
+        </button>
+        <button 
+          class="filter-tab"
+          [class.active]="activeFilter === 'news'"
+          (click)="setFilter('news')">
+          Tech News
+        </button>
+      </div>
+    </div>
+    
+    <!-- Blog Posts Grid -->
+    <div class="blog-grid">
+      <article 
+        class="blog-post"
+        *ngFor="let post of filteredPosts; trackBy: trackByFn"
+        (click)="readPost(post)">
+        
+        <div class="post-image">
+          <img [src]="post.image" [alt]="post.title" loading="lazy">
+          <div class="post-overlay">
+            <span class="read-time">{{ post.readTime }} min</span>
+          </div>
+        </div>
+        
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-author">{{ post.author }}</span>
+            <span class="post-date">{{ formatDate(post.publishDate) }}</span>
+          </div>
+          
+          <h3 class="post-title">{{ post.title }}</h3>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
+          
+          <div class="post-tags">
+            <span class="tag" *ngFor="let tag of post.tags.slice(0, 3)">{{ tag }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+    
+    <!-- Empty State -->
+    <div class="empty-state" *ngIf="filteredPosts.length === 0">
+      <div class="empty-icon">📝</div>
+      <h3>Just Kiddin, I dont have any blog post yet hahaha</h3>
+      <p>I'll upload once I made some</p>
+    </div>
+  </div>
+</div>
+
+<!-- Blog Post Modal -->
+<div class="blog-modal" *ngIf="selectedPost" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2 class="modal-title">{{ selectedPost.title }}</h2>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="post-meta">
+        <span class="post-author">{{ selectedPost.author }}</span>
+        <span class="post-date">{{ formatDate(selectedPost.publishDate) }}</span>
+        <span class="post-read-time">{{ selectedPost.readTime }} min read</span>
+      </div>
+      
+      <img [src]="selectedPost.image" [alt]="selectedPost.title" class="modal-image">
+      
+      <div class="modal-content-text" [innerHTML]="selectedPost.content"></div>
+      
+      <div class="post-tags">
+        <span class="tag" *ngFor="let tag of selectedPost.tags">{{ tag }}</span>
+      </div>
+    </div>
+  </div>
+</div>
