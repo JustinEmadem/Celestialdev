@@ -30,23 +30,10 @@ export class ResumeComponent {
       title: 'Work Experience',
       items: [
         {
-          title: 'Senior Full-Stack Developer',
-          company: 'TechCorp Solutions',
-          location: 'San Francisco, CA',
-          period: '2022 - Present',
-          description: [
-            'Led development of enterprise web applications serving 10,000+ users',
-            'Architected and implemented microservices using Laravel and Angular',
-            'Improved application performance by 40% through optimization techniques',
-            'Mentored junior developers and conducted code reviews'
-          ],
-          technologies: ['Angular', 'Laravel', 'MySQL', 'AWS', 'Docker']
-        },
-        {
           title: 'Full-Stack Developer',
-          company: 'StartupXYZ',
+          company: 'Intechsive Software Development',
           location: 'Remote',
-          period: '2021 - 2022',
+          period: '2024 - 2025',
           description: [
             'Built responsive web applications from concept to deployment',
             'Collaborated with design team to implement pixel-perfect UIs',
@@ -57,16 +44,16 @@ export class ResumeComponent {
         },
         {
           title: 'Junior Web Developer',
-          company: 'WebDev Agency',
-          location: 'New York, NY',
-          period: '2020 - 2021',
+          company: 'Intechsive Software Development',
+          location: 'Tacloban City',
+          period: '2024 - 2025',
           description: [
             'Developed custom WordPress themes and plugins',
             'Created responsive websites for small to medium businesses',
             'Optimized websites for SEO and performance',
             'Provided technical support and maintenance'
           ],
-          technologies: ['WordPress', 'PHP', 'JavaScript', 'MySQL']
+          technologies: ['Laravel', 'Angular', 'JavaScript', 'Postgres']
         }
       ]
     },
@@ -74,14 +61,15 @@ export class ResumeComponent {
       title: 'Education',
       items: [
         {
-          title: 'Bachelor of Science in Computer Science',
-          company: 'University of California, Berkeley',
-          location: 'Berkeley, CA',
-          period: '2016 - 2020',
+          title: 'Bachelor of Science in Information Technology',
+          company: 'Leyte Normal University',
+          location: 'Tacloban City',
+          period: '2020 - 2025',
           description: [
-            'Graduated Magna Cum Laude with GPA 3.8/4.0',
             'Relevant coursework: Data Structures, Algorithms, Database Systems',
-            'Senior project: E-commerce platform with real-time analytics'
+            'Senior project: E-commerce platform with real-time analytics',
+            'Capstone Project: Document Classification using SVM',
+            'Created Model and trainin using Support Vector Machines'
           ]
         }
       ]
@@ -91,7 +79,7 @@ export class ResumeComponent {
       items: [
         {
           title: 'E-Commerce Platform',
-          period: '2023',
+          period: '2024',
           description: [
             'Full-stack e-commerce solution with admin dashboard',
             'Implemented secure payment processing and inventory management',
@@ -101,7 +89,7 @@ export class ResumeComponent {
         },
         {
           title: 'Task Management App',
-          period: '2022',
+          period: '2024',
           description: [
             'Real-time collaborative task management application',
             'Features include drag-and-drop, notifications, and team collaboration',
@@ -118,7 +106,7 @@ export class ResumeComponent {
       name: 'Frontend',
       skills: [
         { name: 'Angular', level: 90 },
-        { name: 'React', level: 85 },
+        { name: 'Vue', level: 85 },
         { name: 'TypeScript', level: 88 },
         { name: 'JavaScript', level: 92 },
         { name: 'CSS/SCSS', level: 85 }
@@ -146,16 +134,15 @@ export class ResumeComponent {
       skills: [
         { name: 'Git', level: 90 },
         { name: 'Docker', level: 78 },
-        { name: 'AWS', level: 75 },
         { name: 'Linux', level: 80 }
       ]
     }
   ];
 
   languages = [
-    { name: 'English', level: 'Native' },
-    { name: 'Spanish', level: 'Intermediate' },
-    { name: 'French', level: 'Basic' }
+    { name: 'Waray-waray', level: 'Native' },
+    { name: 'English', level: 'Intermediate' },
+    { name: 'Filipino', level: 'Basic' }
   ];
 
   getSectionIcon(title: string): string {
@@ -168,7 +155,7 @@ export class ResumeComponent {
   }
 
   downloadResume() {
-    alert('Resume download would start here. In a real app, this would generate a PDF.');
+    alert('Resume can not be downloaded at this momment');
   }
 
   printResume() {
