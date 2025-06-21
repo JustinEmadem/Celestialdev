@@ -13,35 +13,35 @@ export class AboutComponent {
   skillCategories = [
     {
       title: 'Frontend',
-      skills: ['Angular', 'React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Sass']
+      skills: ['Angular', 'Vue JS', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Sass']
     },
     {
       title: 'Backend',
-      skills: ['Laravel', 'Node.js', 'PHP', 'Python', 'REST APIs', 'GraphQL']
+      skills: ['Laravel', 'Node.js', 'PHP', 'Python', 'REST APIs']
     },
     {
       title: 'Database',
-      skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Firebase']
+      skills: ['MySQL', 'PostgreSQL']
     },
     {
       title: 'Tools & Others',
-      skills: ['Git', 'Docker', 'AWS', 'Linux', 'Figma', 'VS Code']
+      skills: ['Git', 'JIRA', 'Docker', 'Linux', 'Figma', 'VS Code', 'LucidChart', 'Diagram.io']
     }
   ];
 
   stats = [
-    { number: '50+', label: 'Projects' },
-    { number: '3+', label: 'Years Experience' },
-    { number: '15+', label: 'Technologies' },
+    { number: '20+', label: 'Projects' },
+    { number: '1+', label: 'Years Experience' },
+    { number: '20+', label: 'Technologies' },
     { number: '100%', label: 'Dedication' }
   ];
 
   aboutCode = [
     '<span class="keyword">class</span> <span class="class">Developer</span> {',
     '  <span class="keyword">constructor</span>() {',
-    '    <span class="keyword">this</span>.<span class="property">name</span> = <span class="string">"John Doe"</span>;',
+    '    <span class="keyword">this</span>.<span class="property">name</span> = <span class="string">"Justin Emadem"</span>;',
     '    <span class="keyword">this</span>.<span class="property">title</span> = <span class="string">"Full Stack Developer"</span>;',
-    '    <span class="keyword">this</span>.<span class="property">location</span> = <span class="string">"Earth"</span>;',
+    '    <span class="keyword">this</span>.<span class="property">location</span> = <span class="string">"Tacloban City, Dagami Leyte"</span>;',
     '  }',
     '  ',
     '  <span class="method">getSkills</span>() {',
