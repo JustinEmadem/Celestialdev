@@ -6,7 +6,7 @@ import {
 
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+// import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { routes } from './app.routes';
 
@@ -15,7 +15,6 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient(), 
-    { provide: LocationStrategy, useClass: HashLocationStrategy } 
+    provideHttpClient()
   ]
 };
